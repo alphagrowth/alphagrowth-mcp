@@ -1,0 +1,10 @@
+{
+  "name": "alphagrowth",
+  "version": "1.0.2",
+  "description": "Free crypto data for AI agents: TVL, fees, funding, investors, yields, token unlocks, DAO treasuries",
+  "mcpServers": {
+    "alphagrowth": {
+      "httpUrl": "https://alphagrowth.io/mcp"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.alphagrowth/data",
+  "title": "AlphaGrowth",
+  "description": "Free crypto data for AI agents: TVL, fees, funding, investors, yields, token unlocks, DAO treasuries",
+  "version": "1.0.2",
+  "websiteUrl": "https://alphagrowth.io/mcp-server",
+  "icons": [
+    {
+      "src": "https://alphagrowth.io/images/android-chrome-384x384.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "384x384"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://alphagrowth.io/mcp"
+    }
+  ]
+}

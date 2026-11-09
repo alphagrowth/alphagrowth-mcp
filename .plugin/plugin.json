@@ -10,6 +10,6 @@
   "repository": "https://github.com/alphagrowth/alphagrowth-mcp",
   "license": "MIT",
   "keywords": ["crypto", "defi", "tvl", "mcp"],
-  "logo": "logo.png",
+  "logo": "https://raw.githubusercontent.com/alphagrowth/alphagrowth-mcp/main/logo.png",
   "mcpServers": "./mcp.json"
 }

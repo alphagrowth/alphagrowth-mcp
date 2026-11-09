@@ -7,7 +7,7 @@ Free crypto data for AI agents. No API key, no sign-up.
 Project metrics (TVL, market cap, price, fees, revenue, users), community growth, funding rounds and investors, chains, DeFi yield pools, token unlock calendars and DAO treasuries, from [AlphaGrowth](https://alphagrowth.io). Every result carries a source block to cite.
 
 - **Endpoint:** `https://alphagrowth.io/mcp` (remote, Streamable HTTP, no auth)
-- **Tools:** 20, all read-only
+- **Tools:** 27, all read-only
 - **Docs:** https://alphagrowth.io/mcp-server
 - **Official MCP Registry:** `io.alphagrowth/data`
 
@@ -59,8 +59,12 @@ gemini extensions install https://github.com/alphagrowth/alphagrowth-mcp
 |---|---|
 | `find_projects` | Find projects |
 | `project_metrics` | Project metrics |
+| `project_tvl_history` | Project TVL history |
 | `project_community` | Project community growth |
 | `rank_projects` | Project rankings |
+| `categories` | Project categories |
+| `upcoming_projects` | Upcoming crypto projects |
+| `upcoming_tges` | Upcoming token launches (TGEs) |
 | `project_funding` | Project funding |
 | `recent_funding_rounds` | Recent funding rounds |
 | `top_investors` | Top investors |
@@ -72,6 +76,9 @@ gemini extensions install https://github.com/alphagrowth/alphagrowth-mcp
 | `yield_pools` | DeFi yield pools |
 | `yield_pool` | DeFi yield pool |
 | `token_unlocks` | Token unlock calendar |
+| `grants` | Crypto grants and hackathons |
+| `spaces` | Crypto X Spaces |
+| `space` | Crypto X Space transcript |
 | `dao_treasuries` | DAO treasuries |
 | `dao_treasury_snapshot` | DAO treasuries snapshot |
 | `dao_treasury_history` | DAO treasury history |

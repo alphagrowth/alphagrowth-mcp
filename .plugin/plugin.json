@@ -1,0 +1,15 @@
+{
+  "name": "alphagrowth",
+  "version": "1.0.2",
+  "description": "Free crypto data for AI agents: TVL, fees, funding, investors, yields, token unlocks, DAO treasuries",
+  "author": {
+    "name": "AlphaGrowth",
+    "url": "https://alphagrowth.io"
+  },
+  "homepage": "https://alphagrowth.io/mcp-server",
+  "repository": "https://github.com/alphagrowth/alphagrowth-mcp",
+  "license": "MIT",
+  "keywords": ["crypto", "defi", "tvl", "mcp"],
+  "logo": "logo.png",
+  "mcpServers": "./mcp.json"
+}

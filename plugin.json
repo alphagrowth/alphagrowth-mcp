@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "alphagrowth",
+  "version": "1.1.0",
+  "description": "Free, read-only crypto data for AI agents: project metrics and TVL history, chains, fees and revenue, funding rounds and investors, DeFi yields, token unlocks, stablecoins and DAO treasuries.",
+  "author": {
+    "name": "AlphaGrowth",
+    "url": "https://alphagrowth.io"
+  },
+  "homepage": "https://alphagrowth.io/mcp-server",
+  "repository": "https://github.com/alphagrowth/alphagrowth-mcp",
+  "license": "MIT",
+  "keywords": ["crypto", "defi", "tvl", "funding", "yields", "dao", "mcp"]
+}

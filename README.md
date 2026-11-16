@@ -7,7 +7,7 @@ Free crypto data for AI agents. No API key, no sign-up.
 Project metrics (TVL, market cap, price, fees, revenue, users), community growth, funding rounds and investors, chains, DeFi yield pools, token unlock calendars and DAO treasuries, from [AlphaGrowth](https://alphagrowth.io). Every result carries a source block to cite.
 
 - **Endpoint:** `https://alphagrowth.io/mcp` (remote, Streamable HTTP, no auth)
-- **Tools:** 27, all read-only
+- **Tools:** 37, all read-only
 - **Docs:** https://alphagrowth.io/mcp-server
 - **Official MCP Registry:** `io.alphagrowth/data`
 
@@ -26,6 +26,14 @@ claude mcp add --transport http alphagrowth https://alphagrowth.io/mcp
 ```
 
 **Claude:** Settings → Connectors → Add custom connector, then paste `https://alphagrowth.io/mcp`.
+
+**Hermes Agent:**
+
+```sh
+hermes plugins install alphagrowth --enable
+```
+
+The plugin adds the server and three skills: crypto project research, DeFi market scan and crypto funding research. Start a new session after installing. Before the catalog listing, install from this repository with `hermes plugins install alphagrowth/alphagrowth-mcp --enable`.
 
 **Gemini CLI:**
 
@@ -60,6 +68,7 @@ gemini extensions install https://github.com/alphagrowth/alphagrowth-mcp
 | `find_projects` | Find projects |
 | `project_metrics` | Project metrics |
 | `project_tvl_history` | Project TVL history |
+| `forks` | Protocol forks |
 | `project_community` | Project community growth |
 | `rank_projects` | Project rankings |
 | `categories` | Project categories |
@@ -72,6 +81,15 @@ gemini extensions install https://github.com/alphagrowth/alphagrowth-mcp
 | `chains` | Chains |
 | `chain_metrics` | Chain metrics |
 | `fees` | Fees and revenue |
+| `fees_history` | Fees and revenue history |
+| `chain_fees` | Fees on a chain |
+| `volumes` | DEX, options and aggregator volumes |
+| `volume_history` | Volume history |
+| `token_prices` | Token prices |
+| `token_price_history` | Token price history |
+| `stablecoins` | Stablecoins |
+| `stablecoin_chains` | Stablecoin supply by chain |
+| `stablecoin_history` | Stablecoin supply history |
 | `treasury_companies` | Treasury companies |
 | `yield_pools` | DeFi yield pools |
 | `yield_pool` | DeFi yield pool |
@@ -92,6 +110,14 @@ The live list, with each tool's inputs, is at https://alphagrowth.io/mcp-server.
 - [llms.txt](https://alphagrowth.io/llms.txt): a guide to the server and the API for language models
 - [OpenAPI](https://alphagrowth.io/openapi.json): the REST API at `/api/v1`, which serves the same data
 - [Server card](https://alphagrowth.io/.well-known/mcp/server-card.json)
+
+## Data and privacy
+
+Every tool is read-only and the server is hosted by AlphaGrowth: this repository has no code that runs on your machine, only the server address, the skills and listing files, and it stores nothing locally. Each tool call is an HTTPS request to `alphagrowth.io`, and what the tools return joins your conversation, so it reaches the model provider your client uses.
+
+We log each call to learn how the data is used: the tool and its arguments, the client's name and version, the user agent, the IP address and an approximate location (country, city and postal area, from Cloudflare). After 30 days the arguments and location are deleted and the IP is replaced by a keyed hash; the records are deleted after 180 days. Calls are rate-limited per IP.
+
+[Privacy policy](https://alphagrowth.io/privacy-policy) · [Your privacy choices](https://alphagrowth.io/privacy-choices) · Contact: marketing@alphagrowth.io
 
 ## License
 

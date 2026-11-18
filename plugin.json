@@ -1,14 +1,110 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "alphagrowth",
-  "version": "1.1.0",
-  "description": "Free, read-only crypto data for AI agents: project metrics and TVL history, chains, fees and revenue, funding rounds and investors, DeFi yields, token unlocks, stablecoins and DAO treasuries.",
+  "version": "1.2.0",
+  "description": "Read-only crypto market data for AI agents: project metrics and TVL history, chains, fees and revenue, funding rounds and investors, DeFi yields, token unlocks, stablecoins and DAO treasuries.",
   "author": {
     "name": "AlphaGrowth",
+    "email": "marketing@alphagrowth.io",
     "url": "https://alphagrowth.io"
   },
   "homepage": "https://alphagrowth.io/mcp-server",
   "repository": "https://github.com/alphagrowth/alphagrowth-mcp",
   "license": "MIT",
-  "keywords": ["crypto", "defi", "tvl", "funding", "yields", "dao", "mcp"]
+  "keywords": [
+    "crypto",
+    "defi",
+    "tvl",
+    "funding",
+    "yields",
+    "dao",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "AlphaGrowth",
+        "shortDescription": "Crypto market data for AI",
+        "longDescription": "AlphaGrowth answers questions about the crypto market with read-only data: the total value locked (TVL) of DeFi projects and chains and its daily history, upcoming token unlocks with their allocations, DeFi yield and lending pools, DAO treasuries, fees and revenue, trading volumes, token prices, stablecoins, digital asset treasury companies, funding rounds and investors, grants, and public X Spaces transcripts. Every answer names its source so it can be cited.\n\nIt is for researchers, analysts, investors and builders who want current numbers in the conversation instead of a dashboard. It cannot trade, move funds or change anything, and it does not need an account.\n\nLimitations: data comes from public sources and onchain data and is updated daily or hourly, so it can lag the market. Token unlock schedules are shown as projects publish them. Nothing it returns is investment advice.",
+        "developerName": "AlphaGrowth",
+        "category": "Finance",
+        "capabilities": [
+          "DeFi TVL and history",
+          "Token unlocks",
+          "Yield and lending pools",
+          "DAO treasuries",
+          "Fees, revenue and volumes",
+          "Funding rounds and investors"
+        ],
+        "websiteURL": "https://alphagrowth.io/mcp-server",
+        "supportURL": "https://alphagrowth.io/contact-us/",
+        "privacyPolicyURL": "https://alphagrowth.io/privacy-policy/",
+        "termsOfServiceURL": "https://alphagrowth.io/terms",
+        "defaultPrompt": [
+          "What's Aave's TVL and how has it changed over the last 30 days?",
+          "When is Monad's next token unlock and how big is it?",
+          "Which stablecoin pools on Ethereum with over $10M TVL pay the most?"
+        ],
+        "brandColor": "#111111",
+        "brandColorDark": "#BFFF36",
+        "composerIcon": "./logo.png",
+        "logo": "./logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "A DeFi protocol's TVL and its 30-day change",
+              "prompt": "What's Aave's TVL and how has it changed over the last 30 days?",
+              "tools_triggered": "project_tvl_history",
+              "expected_behavior": "Returns Aave's current TVL in USD, its daily history for the last 30 days with the percentage change, and its split across chains, citing AlphaGrowth as the source."
+            },
+            {
+              "description": "A token's next unlock",
+              "prompt": "When is Monad's next token unlock and how big is it?",
+              "tools_triggered": "token_unlocks",
+              "expected_behavior": "Returns the date of Monad's next unlock, the number of tokens and their USD value, the allocations (team, investors and others) and the share of circulating supply."
+            },
+            {
+              "description": "A DAO's treasury",
+              "prompt": "How much is the Uniswap DAO treasury worth?",
+              "tools_triggered": "dao_treasuries",
+              "expected_behavior": "Returns the Uniswap DAO treasury's total USD value, its 24-hour change and its main tokens."
+            },
+            {
+              "description": "High-yield stablecoin pools on a chain, filtered by size",
+              "prompt": "Which stablecoin pools on Ethereum with over $10M TVL pay the highest yield?",
+              "tools_triggered": "yield_pools",
+              "expected_behavior": "Lists stablecoin pools on Ethereum with at least $10M TVL, highest supply APY first, with each pool's protocol, APY and TVL."
+            },
+            {
+              "description": "A chain's total value locked",
+              "prompt": "What's the total value locked on Base?",
+              "tools_triggered": "chain_metrics",
+              "expected_behavior": "Returns Base's TVL in USD as of the previous day, with its ecosystem counts."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Weather is not crypto market data, so the plugin should not be used.",
+              "prompt": "What's the weather in Manila tomorrow?"
+            },
+            {
+              "description": "Translation needs no market data, so the plugin should not be used.",
+              "prompt": "Translate 'thank you very much' into Spanish."
+            },
+            {
+              "description": "Creative writing needs no data, so the plugin should not be used.",
+              "prompt": "Write me a short poem about the ocean."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "First release: read-only crypto market data through AlphaGrowth's hosted MCP server."
+      }
+    }
+  }
 }
